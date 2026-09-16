@@ -29,9 +29,9 @@ export interface FieldDefinition {
   placeholder?: string;
   defaultValue?: any;
   options?: string[] | { label: string; value: string }[];
-  relationTo?: string; // name of another collection
+  relationTo?: string;
   relationLabelField?: string;
-  itemType?: string; // for repeaters, e.g. 'text', 'tag'
+  itemType?: string;
   helpText?: string;
   min?: number;
   max?: number;
@@ -42,7 +42,7 @@ export interface CollectionDefinition {
   singularLabel?: string;
   icon: string;
   description?: string;
-  identifierField: string; // which field is used for table row title/card header
+  identifierField: string;
   fields: FieldDefinition[];
 }
 
@@ -54,6 +54,7 @@ export interface CmsConfig {
   siteName: string;
   siteType: string;
   version?: string;
+  apiEndpoint?: string;
   features: {
     pages?: boolean;
     menu?: boolean;
