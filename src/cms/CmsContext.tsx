@@ -76,7 +76,19 @@ export const CmsProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [config, setConfig] = useState<CmsConfig>(() => {
     const saved = localStorage.getItem(STORAGE_KEYS.CONFIG);
     if (saved) {
-      try { return JSON.parse(saved); } catch (e) { console.error(e); }
+      try {
+        const parsed = JSON.parse(saved) as Partial<CmsConfig>;
+        // Merge persisted settings with the current site config so newly added
+        // fields such as apiEndpoint are not lost when an older browser session
+        // is restored from localStorage.
+        return {
+          ...(defaultConfig as unknown as CmsConfig),
+          ...parsed,
+          apiEndpoint: parsed.apiEndpoint || (defaultConfig as unknown as CmsConfig).apiEndpoint
+        } as CmsConfig;
+      } catch (e) {
+        console.error(e);
+      }
     }
     return defaultConfig as unknown as CmsConfig;
   });
