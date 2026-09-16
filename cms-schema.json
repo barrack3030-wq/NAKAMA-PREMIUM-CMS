@@ -1,0 +1,291 @@
+{
+  "collections": {
+    "pages": {
+      "label": "Pages",
+      "singularLabel": "Page",
+      "icon": "file-text",
+      "description": "Static and landing pages for the website",
+      "identifierField": "title",
+      "fields": [
+        {
+          "name": "title",
+          "label": "Page Title",
+          "type": "text",
+          "required": true,
+          "placeholder": "e.g. About Our Roastery"
+        },
+        {
+          "name": "slug",
+          "label": "URL Slug",
+          "type": "text",
+          "required": true,
+          "placeholder": "about"
+        },
+        {
+          "name": "headline",
+          "label": "Hero Headline",
+          "type": "text"
+        },
+        {
+          "name": "content",
+          "label": "Main Content",
+          "type": "rich-text"
+        },
+        {
+          "name": "published",
+          "label": "Published",
+          "type": "toggle",
+          "defaultValue": true
+        },
+        {
+          "name": "seo",
+          "label": "Page SEO",
+          "type": "seo"
+        }
+      ]
+    },
+    "menu": {
+      "label": "Menu Items",
+      "singularLabel": "Menu Item",
+      "icon": "coffee",
+      "description": "Specialty beverages, culinary plates, and fresh baked desserts",
+      "identifierField": "name",
+      "fields": [
+        {
+          "name": "name",
+          "label": "Item Name",
+          "type": "text",
+          "required": true,
+          "placeholder": "e.g. Kyoto Slow Drip Cold Brew"
+        },
+        {
+          "name": "category",
+          "label": "Category",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Specialty Coffee",
+            "Artisan Teas & Tonics",
+            "Savory Kitchen",
+            "Bakes & Pastries"
+          ]
+        },
+        {
+          "name": "price",
+          "label": "Price ($)",
+          "type": "price",
+          "required": true,
+          "placeholder": "6.50"
+        },
+        {
+          "name": "description",
+          "label": "Flavor Notes & Description",
+          "type": "textarea",
+          "placeholder": "Describe notes, brewing origin, or ingredients..."
+        },
+        {
+          "name": "image",
+          "label": "Item Image",
+          "type": "image"
+        },
+        {
+          "name": "dietary",
+          "label": "Dietary Badges",
+          "type": "repeater",
+          "itemType": "text",
+          "placeholder": "e.g. Vegan, Gluten-Free, Organic, Single Origin"
+        },
+        {
+          "name": "isFeatured",
+          "label": "Featured Special",
+          "type": "toggle",
+          "defaultValue": false
+        },
+        {
+          "name": "inStock",
+          "label": "Available Today",
+          "type": "toggle",
+          "defaultValue": true
+        }
+      ]
+    },
+    "gallery": {
+      "label": "Photo Gallery",
+      "singularLabel": "Photo",
+      "icon": "image",
+      "description": "Curated imagery of our space, roasters, baristas, and plates",
+      "identifierField": "title",
+      "fields": [
+        {
+          "name": "title",
+          "label": "Image Title",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "url",
+          "label": "Image File",
+          "type": "image",
+          "required": true
+        },
+        {
+          "name": "category",
+          "label": "Category",
+          "type": "select",
+          "options": ["Interior", "Roasting", "Latte Art", "Kitchen", "Community"]
+        },
+        {
+          "name": "altText",
+          "label": "Alt Text (Accessibility)",
+          "type": "text"
+        },
+        {
+          "name": "featured",
+          "label": "Showcase on Homepage",
+          "type": "toggle",
+          "defaultValue": true
+        }
+      ]
+    },
+    "testimonials": {
+      "label": "Testimonials",
+      "singularLabel": "Testimonial",
+      "icon": "message-square",
+      "description": "Guest reviews, food critic quotes, and community praise",
+      "identifierField": "author",
+      "fields": [
+        {
+          "name": "author",
+          "label": "Author / Guest Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "role",
+          "label": "Role or Publication",
+          "type": "text",
+          "placeholder": "Local Guide / Food Journalist / Coffee Enthusiast"
+        },
+        {
+          "name": "quote",
+          "label": "Review Quote",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "rating",
+          "label": "Rating (1 to 5)",
+          "type": "number",
+          "defaultValue": 5
+        },
+        {
+          "name": "avatar",
+          "label": "Guest Avatar",
+          "type": "image"
+        },
+        {
+          "name": "featured",
+          "label": "Highlight on Front Page",
+          "type": "toggle",
+          "defaultValue": true
+        }
+      ]
+    },
+    "reservation": {
+      "label": "Reservations",
+      "singularLabel": "Reservation",
+      "icon": "calendar",
+      "description": "Table bookings and private tasting events",
+      "identifierField": "guestName",
+      "fields": [
+        {
+          "name": "guestName",
+          "label": "Guest Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email Address",
+          "type": "email",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "label": "Phone Number",
+          "type": "phone"
+        },
+        {
+          "name": "guests",
+          "label": "Party Size",
+          "type": "number",
+          "required": true,
+          "defaultValue": 2
+        },
+        {
+          "name": "date",
+          "label": "Reservation Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "time",
+          "label": "Reservation Time",
+          "type": "time",
+          "required": true
+        },
+        {
+          "name": "seatingArea",
+          "label": "Seating Preference",
+          "type": "select",
+          "options": ["Main Roastery Hall", "Sunlit Patio", "Espresso Bar High-Tops", "Quiet Mezzanine"]
+        },
+        {
+          "name": "specialRequests",
+          "label": "Special Requests / Notes",
+          "type": "textarea"
+        },
+        {
+          "name": "status",
+          "label": "Booking Status",
+          "type": "select",
+          "options": ["Confirmed", "Pending", "Seated", "Cancelled"],
+          "defaultValue": "Confirmed"
+        }
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "singularLabel": "Question",
+      "icon": "help-circle",
+      "description": "Common inquiries regarding parking, beans, beans subscription, and private events",
+      "identifierField": "question",
+      "fields": [
+        {
+          "name": "question",
+          "label": "Question",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "answer",
+          "label": "Answer",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "category",
+          "label": "Category",
+          "type": "select",
+          "options": ["Coffee & Roasting", "Visiting & Seating", "Dietary Options", "Private Bookings"]
+        },
+        {
+          "name": "order",
+          "label": "Display Order",
+          "type": "number",
+          "defaultValue": 1
+        }
+      ]
+    }
+  }
+}

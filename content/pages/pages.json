@@ -1,0 +1,54 @@
+[
+  {
+    "id": "page-home",
+    "title": "Home",
+    "slug": "home",
+    "headline": "Crafted with Intention. Roasted with Precision.",
+    "content": "Welcome to Aura, where world-class single-origin coffees meet seasonal, locally sourced culinary plates.",
+    "published": true,
+    "seo": {
+      "metaTitle": "Aura Artisan Coffee & Kitchen",
+      "metaDescription": "Specialty coffee roastery and seasonal kitchen in Portland.",
+      "slug": ""
+    }
+  },
+  {
+    "id": "page-story",
+    "title": "Our Story",
+    "slug": "story",
+    "headline": "From Seed to Savor",
+    "content": "We travel directly to cooperatives in Yirgacheffe, Huila, and Antigua to source micro-lot beans directly from generational farmers. We pay on average 2.4x the Fair Trade minimum to ensure sustainable wages and soil stewardship.",
+    "published": true,
+    "seo": {
+      "metaTitle": "Our Story | Aura Roasters",
+      "metaDescription": "Learn about our farm-direct relationships and roasting craft.",
+      "slug": "story"
+    }
+  },
+  {
+    "id": "page-menu",
+    "title": "Menu",
+    "slug": "menu",
+    "headline": "Morning Brews & All-Day Fare",
+    "content": "Explore our curated pour-overs, espresso drinks, fresh pastries, and signature savory bowls.",
+    "published": true,
+    "seo": {
+      "metaTitle": "Seasonal Menu | Aura Artisan Coffee",
+      "metaDescription": "Full drink and food menu with prices and dietary tags.",
+      "slug": "menu"
+    }
+  },
+  {
+    "id": "page-reserve",
+    "title": "Reservations",
+    "slug": "reservations",
+    "headline": "Reserve Your Table or Tasting",
+    "content": "Join us for weekend brunch or reserve our espresso bar tasting room for an intimate cupping experience.",
+    "published": true,
+    "seo": {
+      "metaTitle": "Reserve a Table | Aura Artisan Coffee",
+      "metaDescription": "Book a brunch table or private cupping session.",
+      "slug": "reservations"
+    }
+  }
+]

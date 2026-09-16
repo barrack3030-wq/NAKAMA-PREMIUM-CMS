@@ -1,0 +1,26 @@
+{
+  "siteName": "Aura Artisan Coffee & Kitchen",
+  "tagline": "Single-Origin Micro Roastery & Seasonal Brunch Kitchen",
+  "story": "Founded in 2021, Aura was born from a passion for transparent sourcing, ethical farming relationships, and culinary craftsmanship. Every bean is roasted in-house in small batches, highlighting terroir and delicate floral notes.",
+  "foundedYear": 2021,
+  "contact": {
+    "phone": "+1 (555) 382-9401",
+    "email": "hello@auracoffee.com",
+    "address": "482 Timberland Ave, Suite 100",
+    "city": "Portland, OR 97204"
+  },
+  "hours": [
+    { "days": "Monday – Friday", "time": "6:30 AM – 6:00 PM" },
+    { "days": "Saturday", "time": "7:00 AM – 7:00 PM" },
+    { "days": "Sunday", "time": "7:30 AM – 5:00 PM" }
+  ],
+  "socials": {
+    "instagram": "https://instagram.com/auracoffee",
+    "twitter": "https://twitter.com/auracoffee",
+    "facebook": "https://facebook.com/auracoffee"
+  },
+  "announcement": {
+    "enabled": true,
+    "text": "✨ Autumn Seasonal Release: Ethiopian Guji Heirloom now pouring on pour-over bar"
+  }
+}

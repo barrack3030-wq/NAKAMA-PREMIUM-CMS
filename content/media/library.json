@@ -1,0 +1,68 @@
+[
+  {
+    "id": "media-1",
+    "name": "sunlit-bar.jpg",
+    "url": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "1.2 MB",
+    "dimensions": "1920x1280",
+    "altText": "Sunlit timber coffee counter with pour-over stations",
+    "tags": ["interior", "hero", "ambient"],
+    "createdAt": "2026-09-10"
+  },
+  {
+    "id": "media-2",
+    "name": "kyoto-cold-brew.jpg",
+    "url": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "940 KB",
+    "dimensions": "1600x1200",
+    "altText": "Glass beaker of Kyoto cold drip with crystal ice sphere",
+    "tags": ["menu", "drinks", "cold brew"],
+    "createdAt": "2026-09-11"
+  },
+  {
+    "id": "media-3",
+    "name": "avocado-tartine.jpg",
+    "url": "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "1.4 MB",
+    "dimensions": "1920x1080",
+    "altText": "Avocado tartine on artisanal sourdough with edible flowers",
+    "tags": ["food", "brunch", "savory"],
+    "createdAt": "2026-09-12"
+  },
+  {
+    "id": "media-4",
+    "name": "latte-art-cortado.jpg",
+    "url": "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "820 KB",
+    "dimensions": "1400x1400",
+    "altText": "Barista pouring swan latte art into ceramic mug",
+    "tags": ["coffee", "latte art", "craft"],
+    "createdAt": "2026-09-13"
+  },
+  {
+    "id": "media-5",
+    "name": "probat-roaster.jpg",
+    "url": "https://images.unsplash.com/photo-1518832553480-cd0e625ed3e6?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "1.6 MB",
+    "dimensions": "2048x1365",
+    "altText": "Cast iron roaster with fresh coffee beans turning",
+    "tags": ["roastery", "beans", "process"],
+    "createdAt": "2026-09-14"
+  },
+  {
+    "id": "media-6",
+    "name": "pistachio-pastry.jpg",
+    "url": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=1200&auto=format&fit=crop",
+    "type": "image/jpeg",
+    "size": "1.1 MB",
+    "dimensions": "1600x1200",
+    "altText": "Flaky golden danish pastry on bakery marble slab",
+    "tags": ["pastry", "bakery", "sweet"],
+    "createdAt": "2026-09-15"
+  }
+]

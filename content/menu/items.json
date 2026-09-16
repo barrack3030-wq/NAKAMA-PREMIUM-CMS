@@ -1,0 +1,101 @@
+[
+  {
+    "id": "menu-1",
+    "name": "Kyoto Slow-Drip Cold Brew",
+    "category": "Specialty Coffee",
+    "price": 6.75,
+    "description": "12-hour cold atmospheric extraction using Colombian Geisha micro-lot. Notes of candied orange, dark cacao, and jasmine blossom.",
+    "image": "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Vegan", "Gluten-Free", "Single Origin"],
+    "isFeatured": true,
+    "inStock": true
+  },
+  {
+    "id": "menu-2",
+    "name": "Oat Velvet Cortado",
+    "category": "Specialty Coffee",
+    "price": 5.25,
+    "description": "Equal parts double ristretto espresso and textured minor figures oat milk, served in hand-thrown ceramic tumbler.",
+    "image": "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Vegan", "Dairy-Free"],
+    "isFeatured": true,
+    "inStock": true
+  },
+  {
+    "id": "menu-3",
+    "name": "Ethiopian Guji Pour-Over",
+    "category": "Specialty Coffee",
+    "price": 6.50,
+    "description": "V60 pour-over showcasing heirloom natural process beans with wild blueberry, bergamot, and honey sweetness.",
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Single Origin", "Direct Trade"],
+    "isFeatured": false,
+    "inStock": true
+  },
+  {
+    "id": "menu-4",
+    "name": "Ceremonial Uji Matcha Latte",
+    "category": "Artisan Teas & Tonics",
+    "price": 6.50,
+    "description": "First harvest stone-ground green tea from Kyoto whisked with steamed almond milk and raw wildflower blossom nectar.",
+    "image": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Antioxidant Rich", "Organic"],
+    "isFeatured": false,
+    "inStock": true
+  },
+  {
+    "id": "menu-5",
+    "name": "Sparkling Cascara Tonic",
+    "category": "Artisan Teas & Tonics",
+    "price": 5.75,
+    "description": "Brewed sun-dried coffee fruit skin infused with Meyer lemon, fresh rosemary sprig, and handcrafted sparkling tonic water.",
+    "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Refreshing", "Low Sugar"],
+    "isFeatured": true,
+    "inStock": true
+  },
+  {
+    "id": "menu-6",
+    "name": "Heirloom Avocado Tartine",
+    "category": "Savory Kitchen",
+    "price": 14.50,
+    "description": "Toasted house sourdough, smashed Hass avocados, pickled shallots, Persian feta, toasted dukkah spice, and micro cilantro.",
+    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Vegetarian", "Organic"],
+    "isFeatured": true,
+    "inStock": true
+  },
+  {
+    "id": "menu-7",
+    "name": "Smoked Salmon Brioche Benedict",
+    "category": "Savory Kitchen",
+    "price": 18.00,
+    "description": "Wild Pacific king salmon, 64° poached farm eggs, caper emulsion, and tarragon hollandaise over butter toasted brioche.",
+    "image": "https://images.unsplash.com/photo-1608039829572-78524f79c4c7?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Chef Specialty"],
+    "isFeatured": false,
+    "inStock": true
+  },
+  {
+    "id": "menu-8",
+    "name": "Pistachio Rose Cardamom Danish",
+    "category": "Bakes & Pastries",
+    "price": 6.00,
+    "description": "36-layer laminated French butter pastry filled with roasted pistachio frangipane, dried Damask rose petals, and cardamom glaze.",
+    "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["Baked Fresh Daily"],
+    "isFeatured": true,
+    "inStock": true
+  },
+  {
+    "id": "menu-9",
+    "name": "Brown Butter Canelé",
+    "category": "Bakes & Pastries",
+    "price": 4.50,
+    "description": "Traditional Bordeaux pastry baked in copper molds with caramelized beeswax crust and custardy vanilla bean heart.",
+    "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=800&auto=format&fit=crop",
+    "dietary": ["House Favorite"],
+    "isFeatured": false,
+    "inStock": true
+  }
+]

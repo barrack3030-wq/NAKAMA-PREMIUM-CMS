@@ -1,0 +1,22 @@
+{
+  "siteName": "Aura Artisan Coffee & Kitchen",
+  "siteType": "cafe",
+  "version": "1.0.0",
+  "features": {
+    "pages": true,
+    "menu": true,
+    "gallery": true,
+    "testimonials": true,
+    "reservation": true,
+    "faq": true,
+    "blog": false,
+    "products": false,
+    "services": false,
+    "doctors": false,
+    "destinations": false,
+    "packages": false,
+    "team": false,
+    "courses": false,
+    "facilities": false
+  }
+}

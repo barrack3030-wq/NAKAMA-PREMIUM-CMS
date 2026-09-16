@@ -1,0 +1,30 @@
+[
+  {
+    "id": "faq-1",
+    "question": "Do you roast all your coffee beans on site?",
+    "answer": "Yes! Our vintage 1974 Probat roaster sits at the heart of our timber hall. We roast Tuesday and Thursday mornings, and guests are always welcome to watch the roast profiles in real time.",
+    "category": "Coffee & Roasting",
+    "order": 1
+  },
+  {
+    "id": "faq-2",
+    "question": "Are reservations required for morning coffee and brunch?",
+    "answer": "Walk-ins are warmly welcomed throughout the week. For weekend brunch (9 AM – 2 PM) or groups larger than 4, reservations are highly recommended through our website to avoid wait times.",
+    "category": "Visiting & Seating",
+    "order": 2
+  },
+  {
+    "id": "faq-3",
+    "question": "Do you offer plant-based and gluten-conscious options?",
+    "answer": "Absolutely. We craft our oat and almond milks in-house without stabilizers, and over 60% of our seasonal food menu is naturally plant-based or can be prepared on gluten-free artisan bread.",
+    "category": "Dietary Options",
+    "order": 3
+  },
+  {
+    "id": "faq-4",
+    "question": "Can I book the roastery space for private evening events?",
+    "answer": "Yes, we host intimate gatherings, private cuppings, wedding receptions, and book launches after 6:00 PM. Contact us via our reservations tab or email events@auracoffee.com.",
+    "category": "Private Bookings",
+    "order": 4
+  }
+]

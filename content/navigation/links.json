@@ -1,0 +1,16 @@
+{
+  "header": [
+    { "label": "Our Story", "href": "#story", "external": false },
+    { "label": "Menu", "href": "#menu", "external": false },
+    { "label": "Gallery", "href": "#gallery", "external": false },
+    { "label": "Reviews", "href": "#testimonials", "external": false },
+    { "label": "FAQ", "href": "#faq", "external": false }
+  ],
+  "footer": [
+    { "label": "Ethical Sourcing", "href": "#story" },
+    { "label": "Roasting Schedule", "href": "#story" },
+    { "label": "Private Bookings", "href": "#reserve" },
+    { "label": "Coffee Subscriptions", "href": "#menu" },
+    { "label": "Contact Us", "href": "#contact" }
+  ]
+}

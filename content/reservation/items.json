@@ -1,0 +1,38 @@
+[
+  {
+    "id": "res-101",
+    "guestName": "Julian Alvarez",
+    "email": "julian.a@example.com",
+    "phone": "+1 (555) 839-2910",
+    "guests": 2,
+    "date": "2026-09-20",
+    "time": "10:30",
+    "seatingArea": "Sunlit Patio",
+    "specialRequests": "Celebrating anniversary, quiet corner table preferred.",
+    "status": "Confirmed"
+  },
+  {
+    "id": "res-102",
+    "guestName": "Clara Beauchamp",
+    "email": "clara.b@designstudio.co",
+    "phone": "+1 (555) 441-9023",
+    "guests": 4,
+    "date": "2026-09-21",
+    "time": "11:00",
+    "seatingArea": "Main Roastery Hall",
+    "specialRequests": "One guest has dairy allergy, looking forward to oat cortados.",
+    "status": "Confirmed"
+  },
+  {
+    "id": "res-103",
+    "guestName": "Kenji Takahashi",
+    "email": "kenji.t@coffeejournal.org",
+    "phone": "+1 (555) 772-1194",
+    "guests": 1,
+    "date": "2026-09-22",
+    "time": "14:00",
+    "seatingArea": "Espresso Bar High-Tops",
+    "specialRequests": "Interested in private cupping of Ethiopian single origin.",
+    "status": "Pending"
+  }
+]

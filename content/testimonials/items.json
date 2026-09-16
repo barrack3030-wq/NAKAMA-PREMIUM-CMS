@@ -1,0 +1,29 @@
+[
+  {
+    "id": "test-1",
+    "author": "Elena Rostova",
+    "role": "Lead Editor, Pacific Gastronomy",
+    "quote": "Aura represents what modern coffee culture should be: unpretentious yet uncompromisingly obsessive about craft. Their Kyoto drip alone is worth crossing the city for.",
+    "rating": 5,
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop",
+    "featured": true
+  },
+  {
+    "id": "test-2",
+    "author": "Marcus Thorne",
+    "role": "Founder, Kinfolk Roasters Collective",
+    "quote": "The cleanest Geisha cup I have tasted all year. You can genuinely taste the direct farmer relationship and the delicate roasting curve in every sip.",
+    "rating": 5,
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop",
+    "featured": true
+  },
+  {
+    "id": "test-3",
+    "author": "Dr. Sarah Chen",
+    "role": "Neighborhood Resident & Author",
+    "quote": "My daily sanctuary. The morning light through the roastery windows paired with their house cardamom pastry has become the rhythm of my writing mornings.",
+    "rating": 5,
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop",
+    "featured": true
+  }
+]
