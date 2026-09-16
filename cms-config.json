@@ -2,6 +2,7 @@
   "siteName": "Aura Artisan Coffee & Kitchen",
   "siteType": "cafe",
   "version": "1.0.0",
+  "apiEndpoint": "",
   "features": {
     "pages": true,
     "menu": true,
