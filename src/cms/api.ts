@@ -1,8 +1,7 @@
 const SESSION_KEY = 'nakama_cms_session_token';
 
 export function getCmsApiEndpoint(configEndpoint?: string) {
-  const endpoint = String(import.meta.env.VITE_CMS_API_ENDPOINT || configEndpoint || '').trim();
-  return endpoint;
+  return String(import.meta.env.VITE_CMS_API_ENDPOINT || configEndpoint || '').trim();
 }
 
 export function getCmsSessionToken() {
@@ -13,19 +12,12 @@ export function clearCmsSession() {
   localStorage.removeItem(SESSION_KEY);
 }
 
-export async function cmsApi(
-  endpoint: string,
-  action: string,
-  payload: Record<string, unknown> = {}
-) {
+export async function cmsApi(endpoint: string, action: string, payload: Record<string, unknown> = {}) {
   if (!endpoint) throw new Error('CMS API endpoint belum dikonfigurasi.');
 
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain;charset=utf-8',
-      Accept: 'application/json'
-    },
+    headers: { 'Content-Type': 'text/plain;charset=utf-8', Accept: 'application/json' },
     body: JSON.stringify({ action, ...payload }),
     cache: 'no-store',
     redirect: 'follow'
@@ -33,14 +25,21 @@ export async function cmsApi(
 
   const raw = await response.text();
   let data: any;
-  try {
-    data = JSON.parse(raw);
-  } catch {
-    throw new Error(`CMS API tidak mengembalikan JSON (HTTP ${response.status}).`);
-  }
+  try { data = JSON.parse(raw); }
+  catch { throw new Error(`CMS API tidak mengembalikan JSON (HTTP ${response.status}).`); }
 
   if (!data.ok) throw new Error(data.error || 'CMS API request gagal.');
   return data;
+}
+
+export async function logoutCms(configEndpoint?: string) {
+  const endpoint = getCmsApiEndpoint(configEndpoint);
+  const token = getCmsSessionToken();
+  try {
+    if (endpoint && token) await cmsApi(endpoint, 'logout', { token });
+  } finally {
+    clearCmsSession();
+  }
 }
 
 export { SESSION_KEY };
