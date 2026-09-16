@@ -1,46 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { LockKeyhole, LogIn, Loader2, ShieldCheck } from 'lucide-react';
+import { useCms } from '../cms/CmsContext';
+import { cmsApi, clearCmsSession, getCmsApiEndpoint, getCmsSessionToken, SESSION_KEY } from '../cms/api';
 
-const API_ENDPOINT = import.meta.env.VITE_CMS_API_ENDPOINT || '';
-const SESSION_KEY = 'nakama_cms_session_token';
-
-async function api(action: string, payload: Record<string, unknown> = {}) {
-  if (!API_ENDPOINT) throw new Error('CMS API endpoint belum dikonfigurasi.');
-
-  const response = await fetch(API_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8', Accept: 'application/json' },
-    body: JSON.stringify({ action, ...payload }),
-    cache: 'no-store',
-    redirect: 'follow'
-  });
-
-  const raw = await response.text();
-  let data: any;
-  try {
-    data = JSON.parse(raw);
-  } catch {
-    throw new Error(`CMS API tidak mengembalikan JSON (HTTP ${response.status}).`);
-  }
-
-  if (!data.ok) throw new Error(data.error || 'CMS API request gagal.');
-  return data;
-}
-
-export function getCmsSessionToken() {
-  return localStorage.getItem(SESSION_KEY) || '';
-}
-
-export async function logoutCms() {
-  const token = getCmsSessionToken();
-  try {
-    if (token) await api('logout', { token });
-  } finally {
-    localStorage.removeItem(SESSION_KEY);
-  }
-}
-
-const LoginScreen: React.FC<{ onLogin: (token: string) => void }> = ({ onLogin }) => {
+const LoginScreen: React.FC<{ endpoint: string; onLogin: (token: string) => void }> = ({ endpoint, onLogin }) => {
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -55,7 +18,7 @@ const LoginScreen: React.FC<{ onLogin: (token: string) => void }> = ({ onLogin }
     setBusy(true);
     setError('');
     try {
-      const result = await api('login', { password });
+      const result = await cmsApi(endpoint, 'login', { password });
       localStorage.setItem(SESSION_KEY, result.token);
       onLogin(result.token);
     } catch (err: any) {
@@ -103,7 +66,7 @@ const LoginScreen: React.FC<{ onLogin: (token: string) => void }> = ({ onLogin }
 
             <button
               type="submit"
-              disabled={busy}
+              disabled={busy || !endpoint}
               className="w-full rounded-xl bg-neutral-950 hover:bg-neutral-800 text-white px-4 py-3 text-sm font-semibold flex items-center justify-center gap-2 transition disabled:opacity-60"
             >
               {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : <LogIn className="w-4 h-4" />}
@@ -111,9 +74,15 @@ const LoginScreen: React.FC<{ onLogin: (token: string) => void }> = ({ onLogin }
             </button>
           </form>
 
+          {!endpoint && (
+            <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+              CMS API endpoint belum dikonfigurasi untuk website ini.
+            </div>
+          )}
+
           <div className="mt-6 flex items-start gap-2 text-[11px] text-neutral-500 leading-relaxed">
             <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-600" />
-            <span>Password tidak disimpan di GitHub. Verifikasi dilakukan oleh CMS API.</span>
+            <span>Password tidak disimpan di GitHub. Verifikasi dilakukan oleh CMS API dan sesi memiliki masa berlaku terbatas.</span>
           </div>
         </div>
       </div>
@@ -122,28 +91,31 @@ const LoginScreen: React.FC<{ onLogin: (token: string) => void }> = ({ onLogin }
 };
 
 export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { config } = useCms();
+  const endpoint = getCmsApiEndpoint(config.apiEndpoint);
   const [authenticated, setAuthenticated] = useState(false);
   const [checking, setChecking] = useState(true);
-  const token = getCmsSessionToken();
 
   useEffect(() => {
     const check = async () => {
-      if (!token) {
+      const token = getCmsSessionToken();
+      if (!token || !endpoint) {
         setChecking(false);
         return;
       }
+
       try {
-        await api('health');
+        await cmsApi(endpoint, 'publish', { token, files: {}, message: 'session-check' });
         setAuthenticated(true);
       } catch {
-        localStorage.removeItem(SESSION_KEY);
+        clearCmsSession();
         setAuthenticated(false);
       } finally {
         setChecking(false);
       }
     };
     check();
-  }, [token]);
+  }, [endpoint]);
 
   if (checking) {
     return (
@@ -153,6 +125,6 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
     );
   }
 
-  if (!authenticated) return <LoginScreen onLogin={() => setAuthenticated(true)} />;
+  if (!authenticated) return <LoginScreen endpoint={endpoint} onLogin={() => setAuthenticated(true)} />;
   return <>{children}</>;
 };
