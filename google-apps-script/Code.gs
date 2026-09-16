@@ -21,17 +21,10 @@ function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     const action = String(data.action || '').trim();
 
-    if (action === 'login') {
-      return jsonResponse(login(data.password));
-    }
-
-    if (action === 'logout') {
-      return jsonResponse(logout(data.token));
-    }
-
-    if (action === 'health') {
-      return jsonResponse(health());
-    }
+    if (action === 'login') return jsonResponse(login(data.password));
+    if (action === 'logout') return jsonResponse(logout(data.token));
+    if (action === 'health') return jsonResponse(health());
+    if (action === 'validateSession') return jsonResponse(validateSession(data.token));
 
     if (action === 'publish') {
       requireSession(data.token);
@@ -67,28 +60,25 @@ function login(password) {
 
   const props = PropertiesService.getScriptProperties();
   const expectedHash = props.getProperty('CMS_PASSWORD_HASH');
-  if (!expectedHash) {
-    throw new Error('CMS_PASSWORD_HASH belum diset di Script Properties.');
-  }
+  if (!expectedHash) throw new Error('CMS_PASSWORD_HASH belum diset di Script Properties.');
 
   const suppliedHash = sha256Hex(supplied);
-  if (!constantTimeEqual(suppliedHash, expectedHash)) {
-    throw new Error('Password salah.');
-  }
+  if (!constantTimeEqual(suppliedHash, expectedHash)) throw new Error('Password salah.');
 
   const token = Utilities.getUuid() + '-' + Utilities.getUuid();
   CacheService.getScriptCache().put('session:' + token, '1', SESSION_TTL_SECONDS);
 
-  return {
-    ok: true,
-    token: token,
-    expiresIn: SESSION_TTL_SECONDS
-  };
+  return { ok: true, token: token, expiresIn: SESSION_TTL_SECONDS };
 }
 
 function logout(token) {
   if (token) CacheService.getScriptCache().remove('session:' + String(token));
   return { ok: true };
+}
+
+function validateSession(token) {
+  requireSession(token);
+  return { ok: true, valid: true, expiresIn: SESSION_TTL_SECONDS };
 }
 
 function requireSession(token) {
@@ -115,9 +105,7 @@ function constantTimeEqual(a, b) {
   b = String(b || '');
   if (a.length !== b.length) return false;
   let result = 0;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
+  for (let i = 0; i < a.length; i++) result |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return result === 0;
 }
 
@@ -132,16 +120,13 @@ function publishAtomically(files, message) {
   const repo = props.getProperty('GITHUB_REPO');
   const branch = props.getProperty('GITHUB_BRANCH') || 'main';
 
-  if (!token || !owner || !repo) {
-    throw new Error('Konfigurasi GitHub belum lengkap di Script Properties.');
-  }
+  if (!token || !owner || !repo) throw new Error('Konfigurasi GitHub belum lengkap di Script Properties.');
 
   const baseRef = githubApi(
     'GET',
     '/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(repo) + '/git/ref/heads/' + encodeURIComponent(branch),
     token
   );
-
   const baseCommitSha = baseRef.object && baseRef.object.sha;
   if (!baseCommitSha) throw new Error('Commit branch GitHub tidak ditemukan.');
 
@@ -166,12 +151,7 @@ function publishAtomically(files, message) {
       }
     );
 
-    blobs.push({
-      path: normalizeRepoPath(path),
-      mode: '100644',
-      type: 'blob',
-      sha: blob.sha
-    });
+    blobs.push({ path: normalizeRepoPath(path), mode: '100644', type: 'blob', sha: blob.sha });
   });
 
   if (!blobs.length) throw new Error('Tidak ada file untuk dipublish.');
@@ -180,10 +160,7 @@ function publishAtomically(files, message) {
     'POST',
     '/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(repo) + '/git/trees',
     token,
-    {
-      base_tree: baseCommit.tree.sha,
-      tree: blobs
-    }
+    { base_tree: baseCommit.tree.sha, tree: blobs }
   );
 
   const commit = githubApi(
@@ -215,14 +192,10 @@ function publishAtomically(files, message) {
 }
 
 function normalizeRepoPath(path) {
-  return String(path || '')
-    .replace(/^\/+/, '')
-    .replace(/\\/g, '/')
-    .trim();
+  return String(path || '').replace(/^\/+/, '').replace(/\\/g, '/').trim();
 }
 
 function githubApi(method, path, token, body) {
-  const url = 'https://api.github.com' + path;
   const options = {
     method: method,
     muteHttpExceptions: true,
@@ -238,28 +211,22 @@ function githubApi(method, path, token, body) {
     options.payload = JSON.stringify(body);
   }
 
-  const response = UrlFetchApp.fetch(url, options);
+  const response = UrlFetchApp.fetch('https://api.github.com' + path, options);
   const status = response.getResponseCode();
   const raw = response.getContentText();
   let data;
 
-  try {
-    data = JSON.parse(raw);
-  } catch (e) {
-    throw new Error('GitHub mengembalikan response tidak valid (HTTP ' + status + ').');
-  }
+  try { data = JSON.parse(raw); }
+  catch (e) { throw new Error('GitHub mengembalikan response tidak valid (HTTP ' + status + ').'); }
 
   if (status < 200 || status >= 300) {
     throw new Error('GitHub error (' + status + '): ' + (data.message || raw));
   }
-
   return data;
 }
 
 function jsonResponse(data) {
-  return ContentService
-    .createTextOutput(JSON.stringify(data))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
 }
 
 /**
@@ -268,8 +235,6 @@ function jsonResponse(data) {
  */
 function setCmsPassword(password) {
   const value = String(password || '');
-  if (value.length < 10) {
-    throw new Error('Password minimal 10 karakter.');
-  }
+  if (value.length < 10) throw new Error('Password minimal 10 karakter.');
   PropertiesService.getScriptProperties().setProperty('CMS_PASSWORD_HASH', sha256Hex(value));
 }
